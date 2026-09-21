@@ -50,7 +50,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
     set((state) => {
       const id = Number(product.id);
       const existingProduct = state.wishlist.find((item) => Number(item.id) === id);
-      if (existingProduct) return state; // already saved, no-op
+      if (existingProduct) return state;
 
       return {
         wishlist: [...state.wishlist, { ...product, id, quantity: 1 }],
@@ -62,7 +62,6 @@ export const useCartStore = create<CartStore>((set, get) => ({
       wishlist: state.wishlist.filter((item) => Number(item.id) !== Number(id)),
     })),
 
-  // Single handler for the heart button: adds if absent, removes if present
   toggleWishlist: (product) => {
     const id = Number(product.id);
     const exists = get().wishlist.some((item) => Number(item.id) === id);
@@ -73,7 +72,6 @@ export const useCartStore = create<CartStore>((set, get) => ({
     }
   },
 
-  // Move an item from wishlist to cart in one action (common UX pattern)
   moveToCart: (id) =>
     set((state) => {
       const numId = Number(id);

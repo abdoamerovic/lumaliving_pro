@@ -22,7 +22,8 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
   const locale = useLocale();
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
-  const errorMessage = locale === "ar" ? "لا يوجد محتوى" : "Please check content";
+  const emptyCartMessage =
+    locale === "ar" ? "الرجاء إضافة منتج أولاً" : "Please add a product first";
 
   const [form, setForm] = useState(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,30 +36,22 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
 
-    // لو السلة فاضية، منكملش submit خالص
+    // لو السلة فاضية -> إظهار خطأ فورًا
     if (cart.length === 0) {
+      setSubmitError(emptyCartMessage);
       return;
     }
 
-    setSubmitError(null);
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ form, cart }),
-      });
+      // ملحوظة: مؤقتًا بنعمل الطلب محليًا من غير API حقيقي
+      // لحد ما تجهز /api/orders، وقتها هنرجع نفعّل الـ fetch تاني
+      await new Promise((resolve) => setTimeout(resolve, 500)); // محاكاة تأخير الشبكة
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(
-          data?.message || `Order request failed with status ${res.status}`
-        );
-      }
-
-      const orderSnapshot = { form, cart }; // snapshot BEFORE clearing
+      const orderSnapshot = { form, cart };
       clearCart();
       onSuccess(orderSnapshot);
     } catch (err) {
@@ -148,15 +141,11 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
         </div>
       </div>
 
-      {cart.length === 0 && (
-        <p className="text-sm text-red-600">{errorMessage}</p>
-      )}
-
       {submitError && <p className="text-sm text-red-600">{submitError}</p>}
 
       <button
         type="submit"
-        disabled={cart.length === 0 || isSubmitting}
+        disabled={isSubmitting}
         className="w-full rounded-md bg-[#2A2724] py-4 font-semibold text-white transition hover:bg-[#96603D] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? "..." : t("submit")}
