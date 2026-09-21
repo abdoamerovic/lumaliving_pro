@@ -1,0 +1,288 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "category": "Category",
+    "about": "About",
+    "login": "Login",
+    "brand": "Luma Living",
+    "searchPlaceholder": "Search for a product or category...",
+    "categoriesLabel": "Categories",
+    "products": "Products",
+    "categories": {
+    "sofas": "Sofas",
+    "chairs": "Chairs",
+    "tables": "Tables",
+    "lighting": "Lighting",
+    "beds": "Beds",
+    "storage": "Storage"
+  }
+  },
+  "collection": {
+    "badge": "NEW COLLECTION 2024",
+    "title": "Make space for better living.",
+    "subtitle": "Thoughtfully designed furniture for modern homes.",
+    "shopButton": "Shop collection",
+    "exploreButton": "Explore categories"
+  },
+  "explore": {
+    "brand": "Luma Living",
+    "title": "Designed for everyday living.",
+    "description": "Discover furniture that balances comfort, function and timeless design — pieces that grow with you and your home.",
+    "button": "Explore Collection"
+  },
+  "subscribe": {
+    "title": "Stay in the know",
+    "description": "Get updates on new arrivals, exclusive offers, and design inspiration",
+    "placeholder": "Enter your email",
+    "button": "Subscribe"
+  },
+  "footer": {
+    "brand": "Luma Living",
+    "tagline": "Make space for better living.",
+    "company": {
+      "title": "COMPANY",
+      "links": ["About Us", "Careers", "Press", "Contact"]
+    },
+    "support": {
+      "title": "SUPPORT",
+      "links": ["FAQ", "Shipping & Returns", "Privacy Policy", "Terms of Service"]
+    },
+    "followUs": "FOLLOW US",
+    "copyright": "© 2024 Luma Living. All rights reserved."
+  },
+  "looking": {
+  "title": "Shop by Category",
+  "seeAll": "See All",
+  "categories": {
+    "sofas": "Sofas",
+    "chairs": "Chairs",
+    "tables": "Tables",
+    "lighting": "Lighting",
+    "items":"items"
+  },
+  "items": "items"
+},"product": {
+  "addToCart": "Add to cart",
+  "buyNow": "Buy now",
+  "addToWishlist": "Add to wishlist",
+  "color": "Color",
+  "reviews": "reviews",
+  "inStock": "In stock",
+  "outOfStock": "Out of stock",
+  "price": "SAR",
+  "furniture": "Furniture",
+  "featuredProducts": "Featured Products",
+  "Curated": "Curated pieces for the modern home",
+  "more": "See All"
+},
+"shop": {
+  "title": "Shop",
+  "productsCount": " products",
+  "sortDefault": "Default sorting",
+  "sortPriceLow": "Price: Low to High",
+  "sortPriceHigh": "Price: High to Low",
+  "sortName": "Name",
+  "sortRating": "Rating"
+},
+"seo": {
+  "home": {
+    "title": "Luma Living | Modern Furniture for Every Home",
+    "description": "Discover thoughtfully designed furniture that balances comfort, function and timeless style."
+  },
+  "products": {
+    "title": "Shop All Products | Luma Living",
+    "description": "Browse our full collection of sofas, chairs, tables, lighting and more."
+  }
+},
+"tabs": {
+    "description": "description",
+    "specifications": "specifications",
+    "reviews": "reviews"
+  },
+  "cart":{
+    "title":"Shopping Cart",
+    "addNow":"Buy Now",
+    "addwishlist":"Add to Wishlist",
+    "empty": "Your cart is empty.",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "continueShopping": "Continue Shopping",
+    "sar":"sar"
+  },
+   "Login": {
+    "brand": "Luma Living",
+    "welcomeBack": "Welcome back",
+    "signInDescription": "Sign in to your account",
+    "emailAddress": "EMAIL ADDRESS",
+    "password": "PASSWORD",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign in",
+    "or": "or",
+    "continueWithGoogle": "Continue with Google",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  },
+  
+  "Register": {
+    "brand": "Luma Living",
+    "createAccount": "Create account",
+    "joinLumaLiving": "Join Luma Living",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailAddress": "EMAIL ADDRESS",
+    "password": "PASSWORD",
+    "confirmPassword": "CONFIRM PASSWORD",
+    "createAccountButton": "Create account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
+  
+  "checkout": {
+    "title": "Checkout",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Smith",
+    "email": "Email",
+    "emailPlaceholder": "name@example.com",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+1 xxx xxx xxxx",
+    "address": "Address",
+    "addressPlaceholder": "123 Main St, Suite 4",
+    "city": "City",
+    "cityPlaceholder": "New York",
+    "country": "Country",
+    "countryPlaceholder": "United States",
+    "submit": "Place Order",
+    "riyal": "SAR",
+    "successTitle": " order placed successfully!",
+    "successMessage": "Thank you, we'll be in touch soon to confirm delivery.",
+    "backToShopping": "Continue Shopping"
+  },
+  "about": {
+  "badge": "OUR STORY",
+  "title": "Made with care. Designed to last.",
+  "subtitle": "Luma Living was born from a passion for design that never compromises on craft.",
+  "badge_2": "2018 — Present",
+  "title_2": "A story that started in a small workshop",
+  "paragraph1": "In 2018, Layla Al-Hassan opened her first workshop in Dubai with a simple idea: great furniture should be accessible without compromising quality or beauty.",
+  "paragraph2": "Today, every piece we make reflects that same commitment — carefully chosen materials, passionate designers, and craftspeople who take pride in their work.",
+  "paragraph3": "From a single sofa to over 40,000 homes, our goal remains unchanged: to make space better.",
+  "founded": { "value": "2018", "label": "Founded" },
+  "countries": { "value": "12+", "label": "Countries" },
+  "happyHomes": { "value": "40K+", "label": "Happy homes" },
+  "sustainable": { "value": "100%", "label": "Sustainably sourced" }
+},
+"ourValues": {
+  "badge": "WHAT WE BELIEVE",
+  "title": "Our Values",
+  "quality": {
+    "title": "Uncompromising Quality",
+    "description": "Every piece is crafted from sustainably sourced materials and rigorously tested to last a lifetime."
+  },
+  "design": {
+    "title": "Purposeful Design",
+    "description": "We design furniture that lives with you — beautiful at first glance and functional every day after."
+  },
+  "sustainability": {
+    "title": "Sustainability First",
+    "description": "We source wood from certified forests and use low-VOC finishes, because the planet is part of the brief."
+  },
+  "humanCentered": {
+    "title": "Human-Centred",
+    "description": "From our designers to our customer team, people are at the heart of everything we make and do."
+  }
+},
+"team": {
+  "badge": "THE PEOPLE",
+  "title": "Meet the Team",
+  "member1": { "name": "Layla Al-Hassan", "role": "Founder & Creative Director" },
+  "member2": { "name": "Nour Khalid", "role": "Head of Design" },
+  "member3": { "name": "Sara Mansour", "role": "Head of Craft & Production" }
+},
+"quote": {
+  "text": "Furniture to live in, not just to look at.",
+  "author": "Layla Al-Hassan, Founder"
+},
+"aboutCta": {
+  "title": "Ready to transform your home?",
+  "subtitle": "Explore our full collection or speak with our design team.",
+  "shopButton": "Shop Collection",
+  "exploreButton": "Explore Categories"
+},
+"aside": {
+  "all": "All Products",
+  "sofas": "Sofas",
+  "chairs": "Chairs",
+  "tables": "Tables",
+  "lighting": "Lighting",
+  "beds": "Beds",
+  "storage": "Storage"
+}, "Category": {
+    "breadcrumbHome": "Home",
+    "breadcrumbCategories": "Categories",
+    "eyebrow": "Shop by Category",
+    "title": "Shop by Category",
+    "description": "Discover our complete collection of carefully crafted home furniture.",
+    "productCount": "{count} products",
+    "shopNow": "Shop Now",
+    "titlelast":"Can't find what you're looking for? Browse everything.",
+    "toProduct":"Browse All Products",
+
+    "sofas": {
+      "name": "Sofas",
+      "description": "Discover our collection of sofas, designed to bring comfort, style, and elegance to your living space."
+    },
+
+    "chairs": {
+      "name": "Chairs",
+      "description": "Explore our collection of chairs, combining comfort, functionality, and timeless design for every space."
+    },
+
+    "tables": {
+      "name": "Tables",
+      "description": "Discover our collection of tables, crafted to combine functionality, elegance, and timeless design."
+    },
+    "bed": {
+      "name": "Beds",
+      "description": "Discover our collection of beds, designed to bring comfort, relaxation, and timeless elegance to your bedroom."
+  },
+"light": {
+  "name": "Lighting",
+  "description": "Discover our collection of lighting, designed to bring warmth, atmosphere, and elegance to every space."
+},"storage": {
+  "name": "Storage",
+  "description": "Discover our collection of storage solutions, designed to keep your space organized while adding style and elegance."
+},
+"categoryGlance": {
+  "title": "All categories at a glance",
+  "storage": "storage",
+  "beds": "beds",
+  "lighting": "lighting",
+  "tables": "tables",
+  "chairs": "chairs",
+  "sofas": "sofas"
+}
+
+
+},
+"auth": {
+    "auth": {
+    "forgotPasswordTitle": "Forgot your password?",
+    "forgotPasswordSubtitle": "Enter your email and we'll send you a reset link",
+    "email": "Email",
+    "sendResetLink": "Send reset link",
+    "sending": "Sending...",
+    "resetLinkSent": "A reset link has been sent to your email",
+    "resetLinkError": "Something went wrong, please try again"
+  }
+}
+}
