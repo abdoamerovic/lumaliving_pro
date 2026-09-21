@@ -2,10 +2,19 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { useCartStore } from "@/store/cartStore";
+import { useCartStore, type CartItem } from "@/store/cartStore";
+
+const initialForm = {
+  fullName: "",
+  email: "",
+  phone: "",
+  address: "",
+  city: "",
+  country: "",
+};
 
 interface SubmitOrderProps {
-  onSuccess: () => void;
+  onSuccess: (order: { form: typeof initialForm; cart: CartItem[] }) => void;
 }
 
 export default function Submitorder({ onSuccess }: SubmitOrderProps) {
@@ -15,15 +24,7 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
   const clearCart = useCartStore((state) => state.clearCart);
   const errorMessage = locale === "ar" ? "لا يوجد محتوى" : "Please check content";
 
-  const [form, setForm] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    country: "",
-  });
-
+  const [form, setForm] = useState(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -57,8 +58,9 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
         );
       }
 
+      const orderSnapshot = { form, cart }; // snapshot BEFORE clearing
       clearCart();
-      onSuccess();
+      onSuccess(orderSnapshot);
     } catch (err) {
       console.error("Order failed:", err);
       setSubmitError(

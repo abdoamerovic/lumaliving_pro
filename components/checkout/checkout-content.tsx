@@ -1,18 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import type { ComponentProps } from "react";
 import SubmitOrder from "@/components/checkout/submitorder";
 import OrderSummary from "@/components/checkout/checkid";
 import CheckoutSuccess from "@/components/checkout/checkout-success";
 
+type SubmittedOrder = ComponentProps<typeof CheckoutSuccess>["order"];
 
 export default function CheckoutContent() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedOrder, setSubmittedOrder] = useState<SubmittedOrder | null>(null);
 
-  if (isSubmitted) {
+  if (submittedOrder) {
     return (
       <div className="mx-auto max-w-lg">
-        <CheckoutSuccess />
+        <CheckoutSuccess order={submittedOrder} />
       </div>
     );
   }
@@ -23,7 +25,7 @@ export default function CheckoutContent() {
         <OrderSummary />
       </div>
       <div className="order-2 lg:order-2 lg:col-span-2">
-        <SubmitOrder onSuccess={() => setIsSubmitted(true)} />
+        <SubmitOrder onSuccess={(order) => setSubmittedOrder(order)} />
       </div>
     </div>
   );

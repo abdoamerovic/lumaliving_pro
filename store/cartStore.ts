@@ -1,12 +1,11 @@
 import { create } from "zustand";
 import { Product } from "../types/products";
 
-type CartItem = Product & {
+export type CartItem = Product & {
   quantity: number;
 };
-type WishItem = Product & {
-  quantity: number;
-};
+
+type WishItem = CartItem;
 
 type CartStore = {
   cart: CartItem[];
