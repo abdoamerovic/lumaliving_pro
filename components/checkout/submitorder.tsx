@@ -14,6 +14,7 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
   const errorMessage = locale === "ar" ? "لا يوجد محتوى" : "Please check content";
+
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -23,11 +24,13 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
     country: "",
   });
 
-  const handleChange = (field: keyof typeof form) => (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleChange =
+    (field: keyof typeof form) => (e: ChangeEvent<HTMLInputElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,6 +40,9 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
       return;
     }
 
+    setSubmitError(null);
+    setIsSubmitting(true);
+
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -45,14 +51,23 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
       });
 
       if (!res.ok) {
-        throw new Error(`Order request failed with status ${res.status}`);
+        const data = await res.json().catch(() => null);
+        throw new Error(
+          data?.message || `Order request failed with status ${res.status}`
+        );
       }
 
       clearCart();
       onSuccess();
     } catch (err) {
       console.error("Order failed:", err);
-      // show an error state instead
+      setSubmitError(
+        locale === "ar"
+          ? "حدث خطأ أثناء إرسال الطلب، حاول مرة أخرى"
+          : "Something went wrong submitting your order. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -135,12 +150,14 @@ export default function Submitorder({ onSuccess }: SubmitOrderProps) {
         <p className="text-sm text-red-600">{errorMessage}</p>
       )}
 
+      {submitError && <p className="text-sm text-red-600">{submitError}</p>}
+
       <button
         type="submit"
-        disabled={cart.length === 0}
+        disabled={cart.length === 0 || isSubmitting}
         className="w-full rounded-md bg-[#2A2724] py-4 font-semibold text-white transition hover:bg-[#96603D] disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {t("submit")}
+        {isSubmitting ? "..." : t("submit")}
       </button>
     </form>
   );
