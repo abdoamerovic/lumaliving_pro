@@ -52,10 +52,11 @@ export default function Checkout() {
         {t("checkout")}
       </button>
       </Link>
-
+      <Link href={"/products"}>
       <button className="mt-4 w-full border border-[#e5ddd5] py-4 text-[#333] transition hover:bg-[#f8f5f2]">
         {t("continueShopping")}
       </button>
+      </Link>
     </section>
   );
 }
