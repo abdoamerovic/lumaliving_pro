@@ -38,7 +38,7 @@ export async function AboutStory({ locale }: { locale: string }) {
             </div>
             <div className="absolute right-0 bottom-0 w-[49%] h-[70%] overflow-hidden rounded-sm">
               <Image
-                src="/hero_image/thired_images.jfif"
+                src="/hero_image/threed.png"
                 alt={t("title")}
                 fill
                 sizes="(max-width: 768px) 52vw, 26vw"

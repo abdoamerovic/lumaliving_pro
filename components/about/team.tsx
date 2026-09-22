@@ -3,8 +3,8 @@ import { getTranslations } from "next-intl/server";
 
 const team = [
   { key: "member1", image: "/hero_image/ceo_1.jpg" },
-  { key: "member2", image: "/hero_image/ceo_2.jfif" },
-  { key: "member3", image: "/hero_image/ceo_3.jfif" },
+  { key: "member2", image: "/hero_image/ceol_2.png" },
+  { key: "member3", image: "/hero_image/ceol_3.png" },
 ] as const;
 
 export async function TeamSection({ locale }: { locale: string }) {
