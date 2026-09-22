@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { CiHeart, CiStar } from "react-icons/ci";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -10,9 +9,7 @@ import { useCartStore } from "@/store/cartStore";
 
 interface ShoppingProps {
   locale: string;
-  // Product `type` to show ("sofa", "bed", ...). Leave it out to show everything.
   type?: string;
-  // "default" | "price-low" | "price-high" | "name" | "rating"
   sort?: string;
   t: {
     furniture: string;
@@ -21,16 +18,15 @@ interface ShoppingProps {
 }
 
 export function Shopping({ locale, type, sort = "default", t }: ShoppingProps) {
-  const [wishlist, setWishlist] = useState<Set<number>>(new Set());
   const p = useTranslations("product");
   const addToCart = useCartStore((state) => state.addToCart);
+  const wishlist = useCartStore((state) => state.wishlist);
+  const toggleWishlist = useCartStore((state) => state.toggleWishlist);
 
-  // The filter: only products of this type, or all of them when no type is given
   const filtered = type
     ? products.filter((item) => item.type === type)
     : products;
 
-  // The sort: copy the array first so the original data is never changed
   const items = [...filtered].sort((a, b) => {
     switch (sort) {
       case "price-low":
@@ -44,35 +40,21 @@ export function Shopping({ locale, type, sort = "default", t }: ShoppingProps) {
           ? a.name_ar.localeCompare(b.name_ar, "ar")
           : a.name_en.localeCompare(b.name_en, "en");
       default:
-        return 0; // keep the original order
+        return 0;
     }
   });
 
-  const toggleWishlist = (id: number) => {
-    setWishlist((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
   const handleAddToCart = (product: (typeof products)[number]) => {
-    console.log("CLICKED:", product.id, product.name_en);
-
     addToCart(product);
-
-    console.log("CART AFTER:", useCartStore.getState().cart);
   };
 
   return (
     <section className="bg-[#faf8f5] px-1 py-16">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
         {items.map((product, index) => {
-          const isSaved = wishlist.has(product.id);
+          const isSaved = wishlist.some(
+            (item) => Number(item.id) === Number(product.id)
+          );
           const name = locale === "ar" ? product.name_ar : product.name_en;
 
           return (
@@ -80,8 +62,8 @@ export function Shopping({ locale, type, sort = "default", t }: ShoppingProps) {
               key={product.id}
               className="flex flex-col border-2 border-[#E9DECC] pb-2"
             >
-              <Link href={`/products/${product.id}`}>
-                <div className="relative aspect-6/8 overflow-hidden bg-gray-100">
+              <div className="relative aspect-6/8 overflow-hidden bg-gray-100">
+                <Link href={`/products/${product.id}`}>
                   <Image
                     src={product.image}
                     alt={name}
@@ -90,21 +72,20 @@ export function Shopping({ locale, type, sort = "default", t }: ShoppingProps) {
                     sizes="(max-width: 768px) 50vw, 25vw"
                     className="object-cover hover:scale-105 transition-transform duration-500"
                   />
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      toggleWishlist(product.id);
-                    }}
-                    aria-label="Toggle wishlist"
-                    className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-sm"
-                  >
-                    <CiHeart
-                      size={14}
-                      className={isSaved ? "fill-red-500 text-red-500" : "text-gray-500"}
-                    />
-                  </button>
-                </div>
-              </Link>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => toggleWishlist(product)}
+                  aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}
+                  className="absolute right-2 top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-sm"
+                >
+                  <CiHeart
+                    size={14}
+                    className={isSaved ? "fill-red-500 text-red-500" : "text-gray-500"}
+                  />
+                </button>
+              </div>
 
               <div className="px-4">
                 <p className="mt-3 text-[11px] font-medium tracking-wide text-[#B8764F]">

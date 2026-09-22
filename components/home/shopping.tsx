@@ -45,39 +45,41 @@ export function Shopping({ locale, type, sort = "default", t }: ShoppingProps) {
   const items = sorted.slice(0, 8);
 
   return (
-    <section className="w-full bg-[#faf8f5] py-16  ">
-      <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 ">
+    <section className="w-full bg-[#faf8f5] py-16">
+      <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
         {items.map((product, index) => {
-          const isSaved = wishlist.some((item) => Number(item.id) === Number(product.id));
+          const isSaved = wishlist.some(
+            (item) => Number(item.id) === Number(product.id)
+          );
           const name = locale === "ar" ? product.name_ar : product.name_en;
 
           return (
             <div key={product.id} className="flex flex-col border-2 border-[#E9DECC] pb-2">
-              <Link href={`/products/${product.id}`}>
-                <div className="relative aspect-6/8 overflow-hidden bg-gray-100   ">
+              {/* الزرار دلوقتي برا الـ Link تمامًا، مش جواه خالص */}
+              <div className="relative aspect-6/8 overflow-hidden bg-gray-100">
+                <Link href={`/products/${product.id}`}>
                   <Image
                     src={product.image}
                     alt={name}
                     fill
                     priority={index < 4}
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-cover hover:scale-105 transition-transform duration-500  "
+                    className="object-cover hover:scale-105 transition-transform duration-500"
                   />
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      toggleWishlist(product);
-                    }}
-                    aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}
-                    className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-sm"
-                  >
-                    <CiHeart
-                      size={14}
-                      className={isSaved ? "fill-red-500 text-red-500" : "text-gray-500"}
-                    />
-                  </button>
-                </div>
-              </Link>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => toggleWishlist(product)}
+                  aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}
+                  className="absolute right-2 top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-sm"
+                >
+                  <CiHeart
+                    size={14}
+                    className={isSaved ? "fill-red-500 text-red-500" : "text-gray-500"}
+                  />
+                </button>
+              </div>
 
               <div className="px-4">
                 <p className="mt-3 text-[11px] font-medium tracking-wide text-[#B8764F]">
